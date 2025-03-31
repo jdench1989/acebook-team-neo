@@ -22,6 +22,6 @@ jobs:
         node-version: 23.10
         cache: 'npm'
     - run: npm run start:test &
-    - run: npx wait-on http://localhost:3000
+    - run: npx wait-on http://localhost:3030
     - run: npm test
         
