@@ -1,7 +1,7 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
-name: Node.js CI
+name: Acebook CI
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  Build-and-test:
 
     runs-on: ubuntu-latest
 
@@ -21,14 +21,18 @@ jobs:
       with:
         node-version: 23.10
         cache: 'npm'
-    - run: npm install
-    - run: sudo apt-get install gnupg curl
-    - run: curl -fsSL https://www.mongodb.org/static/pgp/server-8.0.asc | sudo gpg -o /usr/share/keyrings/mongodb-server-8.0.gpg --dearmor
-    - run: echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-8.0.gpg ] https://repo.mongodb.org/apt/ubuntu noble/mongodb-org/8.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-8.0.list
-    - run: sudo apt-get update
-    - run: sudo apt-get install -y mongodb-org
-    - run: sudo systemctl start mongod
-    - run: npm run start:test &
+    - name: Install dependencies
+      run: npm install
+    - name: Setup MongoDB
+      run: |
+        sudo apt-get install gnupg curl
+        curl -fsSL https://www.mongodb.org/static/pgp/server-8.0.asc | sudo gpg -o /usr/share/keyrings/mongodb-server-8.0.gpg --dearmor
+        echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-8.0.gpg ] https://repo.mongodb.org/apt/ubuntu noble/mongodb-org/8.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-8.0.list
+        sudo apt-get update
+        sudo apt-get install -y mongodb-org
+        sudo systemctl start mongod
+    - name: Start test server
+      run: npm run start:test &
     - run: sleep 5
-    - run: npm test
-        
+    - name: Run tests
+      run: npm test
