@@ -21,6 +21,7 @@ jobs:
       with:
         node-version: 23.10
         cache: 'npm'
+    - run: npm install
     - run: npm run start:test &
     - run: sleep 5
     - run: npm test
