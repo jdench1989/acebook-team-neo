@@ -14,7 +14,7 @@ It uses:
 
 ## Card wall
 
-REPLACE THIS TEXT WITH A LINK TO YOUR CARD WALL
+[Trello board](https://trello.com/b/88ZBKo8G/team-neo)
 
 ## Quickstart
 
