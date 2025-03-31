@@ -14,18 +14,14 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x, 22.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
     - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js v23.10
       uses: actions/setup-node@v4
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 23.10
         cache: 'npm'
-    - run: npm install
-    - run: npm run start:test
+    - run: npm run start:test &
+    - run: npx wait-on http://localhost:3000
     - run: npm test
+        
