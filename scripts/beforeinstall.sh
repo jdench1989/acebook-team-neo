@@ -1,8 +1,11 @@
-#!bin/bash
+#!/bin/bash
 
-# Install node
-yum install nvm
-nvm install 23.10.0
+# Exit on error
+set -e
+
+# Install Node.js properly (using nodesource)
+curl -fsSL https://rpm.nodesource.com/setup_lts.x | bash -
+yum install -y nodejs
 
 # Install dependencies
 npm install

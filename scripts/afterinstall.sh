@@ -1,4 +1,7 @@
-# !bin/bash
+#!/bin/bash
 
-# Satrt server
+# Exit on error
+set -e
+
+# Start server
 npm start
