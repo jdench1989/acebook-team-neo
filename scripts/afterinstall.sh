@@ -10,6 +10,9 @@ yum install -y nodejs
 # Change to the correct deployment directory
 cd /home/ec2-user/acebook
 
+# Update npm
+npm install -g npm@latest
+
 # Install dependencies
 if [ -f package-lock.json ]; then
     npm ci
