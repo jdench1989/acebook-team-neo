@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Exit on error
-set -e
+sudo set -e
 
 # Start server
 npm start
