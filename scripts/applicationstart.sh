@@ -7,4 +7,4 @@ set -e
 cd /home/ec2-user/acebook
 
 # Start server
-npm start
+npm start &
