@@ -8,7 +8,7 @@ sudo curl -fsSL https://rpm.nodesource.com/setup_lts.x | bash -
 sudo yum install -y nodejs
 
 # Install dependencies
-sudo npm ci
+sudo npm install
 
 # Install MongoDB
 sudo echo "[mongodb-org-8.0]
