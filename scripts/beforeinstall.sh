@@ -7,8 +7,15 @@ set -e
 curl -fsSL https://rpm.nodesource.com/setup_lts.x | bash -
 yum install -y nodejs
 
+# Change to the correct deployment directory
+cd /home/ec2-user/acebook
+
 # Install dependencies
-npm ci --unsafe-perm
+if [ -f package-lock.json ]; then
+    npm ci
+else
+    npm install
+fi
 
 # Install MongoDB
 echo "[mongodb-org-8.0]
