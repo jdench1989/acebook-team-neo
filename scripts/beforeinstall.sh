@@ -8,6 +8,7 @@ curl -fsSL https://rpm.nodesource.com/setup_lts.x | bash -
 yum install -y nodejs
 
 # Change to the correct deployment directory
+mkdir -p /home/ec2-user/acebook
 cd /home/ec2-user/acebook
 
 # Install dependencies
