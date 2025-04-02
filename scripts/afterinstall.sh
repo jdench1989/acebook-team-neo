@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Exit on error
-sudo set -e
+set -e
 
 # Install Node.js properly (using nodesource)
 curl -fsSL https://rpm.nodesource.com/setup_lts.x | bash -
@@ -32,6 +32,3 @@ yum install -y mongodb-org
 systemctl daemon-reload
 systemctl enable mongod
 systemctl start mongod
-
-# Start server
-npm start
