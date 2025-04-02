@@ -5,10 +5,10 @@ files:
     destination: /home/ec2-user/acebook
 file_exists_behavior: OVERWRITE
 hooks:
-  BeforeInstall: 
-    - location: scripts/beforeinstall.sh
-      timeout: 300
-      runas: root
+  # BeforeInstall: 
+  #   - location: scripts/beforeinstall.sh
+  #     timeout: 300
+  #     runas: root
   AfterInstall:
     - location: scripts/afterinstall.sh
       timeout: 300
