@@ -2,14 +2,14 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: ~/
+    destination: ~/acebook
 file_exists_behavior: OVERWRITE
 hooks:
   BeforeInstall: 
     - location: scripts/beforeinstall.sh
       timeout: 300
-      runas: root
+      runas: ec2-user
   AfterInstall:
     - location: scripts/afterinstall.sh
       timeout: 300
-      runas: root
+      runas: ec2-user
